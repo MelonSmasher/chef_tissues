@@ -91,13 +91,13 @@ if node['platform_family'] == 'windows'
       end
     end
   else
-    log 'MS17-010 install: windows version not supported' do
+    log "MS17-010 install: windows version not supported: #{::Windows::VersionHelper.nt_version node}" do
       message "Found unsupported os version: #{::Windows::VersionHelper.nt_version node} ..."
       level :error
     end
   end
 else
-  log 'MS17-010 install: platform not supported' do
+  log "MS17-010 install: platform not supported #{node['platform_family']}" do
     message "#{node['platform_family']} is not supported..."
     level :warn
   end
