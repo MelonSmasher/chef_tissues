@@ -37,13 +37,13 @@ if node['platform_family'] == 'windows'
 
   # Switch on the OS version
   case ::Windows::VersionHelper.nt_version node
-    when '6.1'
+    when 6.1
       # 'Windows 7 or Server 2008R2'
       version = :v61
-    when '6.2'
+    when 6.2
       # 'Windows 8 or Server 2012'
       version = :v62
-    when '6.3'
+    when 6.3
       # 'Windows 8.1 or Server 2012R2'
       version = :v63
     else
