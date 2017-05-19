@@ -4,7 +4,6 @@
 
 # Are we on Windows?
 if node['platform_family'] == 'windows'
-
   # Create a hash of the available patch urls
   urls = {
       :v61 => {
@@ -91,6 +90,15 @@ if node['platform_family'] == 'windows'
         level :error
       end
     end
+  else
+    log 'MS17-010 install' do
+      message "Found unsupported os version: #{::Windows::VersionHelper.nt_version node} ..."
+      level :error
+    end
   end
-
+else
+  log 'MS17-010 install' do
+    message "#{node['platform_family']} is not supported..."
+    level :warn
+  end
 end
